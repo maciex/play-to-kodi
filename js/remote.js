@@ -390,7 +390,8 @@ function initConnectivity(callback) {
 //
 function initFavouritesTable(settings) {
     debugLog("initFavouritesTable()");
-    var favouritesTable = $('#favourites');
+    let favArray;
+    let favouritesTable = $('#favourites');
     favouritesTable.hide();
     favouritesTable.find('tbody').find("tr").remove();
     if (getAllFavourites(settings) != null) {
