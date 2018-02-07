@@ -65,6 +65,9 @@ chrome.runtime.onMessage.addListener(
             case 'setDebug':
                 setDebug(request.enable);
                 break;
+            default:
+                if (debugLogsEnabled) console.log("Unexpected message received: " + JSON.stringify(request));
+                return false;
         }
 
         return true;

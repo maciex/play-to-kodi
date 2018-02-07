@@ -189,7 +189,9 @@ function validVideoPage(url, callback) {
             tab = tab[0];
             // TODO This shows "Unchecked lastError value: Error: Could not establish connection. Receiving end does not exist." on Firefox in console
             chrome.tabs.sendMessage(tab.id, {action: 'isValid'}, function (response) {
-                if (response) {
+                if (chrome.runtime.lastError) {
+                    if (debugLogsEnabled) console.log(`sendMessage failed to tab.id: ${tab.id}, tab.url: ${tab.url}, msg: ${chrome.runtime.lastError}`);
+                } else if (response) {
                     callback();
                 }
             });
