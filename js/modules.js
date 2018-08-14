@@ -907,7 +907,27 @@ var TeamCocoModule = {
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getTeamCocoUrl'}, function (response) {
             if (response) {
-                console.log('TeamCocoModule response.url: ' + response.url);
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var RuvIsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*ruv.is/*",
+            "ruv.party/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'audio';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
+            if (response) {
                 callback(response.url);
             }
         });
@@ -956,5 +976,6 @@ var allModules = [
     YleAreenaModule,
     YoutubeModule,
     ZdfMediathekModule,
-    TeamCocoModule
+    TeamCocoModule,
+    RuvIsModule
 ];

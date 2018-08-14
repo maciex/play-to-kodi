@@ -90,8 +90,8 @@
         "matches": ["*://*.pornhub.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/pornhub-content-scripts.js"]
     }, {
-        "matches":["*://*.teamcoco.com/*"],
-        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/teamcoco-content-scripts.js"]
+        "matches":["*://www.ruv.is/*", "*://ruv.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/ruv-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"
