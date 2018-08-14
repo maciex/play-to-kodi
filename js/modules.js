@@ -893,6 +893,27 @@ var ZdfMediathekModule = {
     }
 };
 
+var TeamCocoModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*teamcoco.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getTeamCocoUrl'}, function (response) {
+            if (response) {
+                console.log('TeamCocoModule response.url: ' + response.url);
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var allModules = [
     AcestreamModule,
     AnimeLabModule,
@@ -934,5 +955,6 @@ var allModules = [
     XnxxModule,
     YleAreenaModule,
     YoutubeModule,
-    ZdfMediathekModule
+    ZdfMediathekModule,
+    TeamCocoModule
 ];
