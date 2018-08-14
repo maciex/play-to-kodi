@@ -913,7 +913,28 @@ var TeamCocoModule = {
     }
 };
 
-var RuvIsModule = {
+var RuvIsVideoModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*ruv.is/*",
+            "ruv.party/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
+            if (response['MediaType'] == 'video' ) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var RuvIsAudioModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
             ".*ruv.is/*",
@@ -927,7 +948,7 @@ var RuvIsModule = {
     },
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
-            if (response) {
+            if (response['MediaType'] == 'audio' ) {
                 callback(response.url);
             }
         });
@@ -977,5 +998,6 @@ var allModules = [
     YoutubeModule,
     ZdfMediathekModule,
     TeamCocoModule,
-    RuvIsModule
+    RuvIsVideoModule,
+    RuvIsAudioModule
 ];
