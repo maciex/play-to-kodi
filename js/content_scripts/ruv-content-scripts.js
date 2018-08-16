@@ -10,12 +10,10 @@ chrome.runtime.onMessage.addListener(
             video_url = null;
             
         /*
-
         thing = $('html').html().match("(https|http)://www.ruv.is/utvarp/static/js/main..*?\\.js");
         radio_url = content.match("(https|http)://ruvruv-live.hls.adaptive.level3.net/.*?\\.m3u8")[0];
         audio_url = $('audio').html().match("(https|http).*?^\s-\\.mp3")[0];
         video_url = $('video').html().match("(https|http)://.*?[^\s-]\\.m3u8")[0];
-
         */
 
         try{

@@ -936,7 +936,8 @@ var VisirIsModule = {
 var UtvarpSagaModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
-            ".*utvarpsaga.is/*"
+            ".*utvarpsaga.is/*",
+            "utvarpsaga.is/*"
         ];
 
         return urlMatchesOneOfPatterns(url, validPatterns);
