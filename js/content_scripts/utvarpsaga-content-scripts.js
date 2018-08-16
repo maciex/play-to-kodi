@@ -23,10 +23,8 @@ chrome.runtime.onMessage.addListener(
         if ("getUtvarpSagaUrl" == request.action) {
             var link = findStreamLink();
             if (link) {
-                console.log('Stream');
                 play_file(link);
             }else{
-                console.log('File');
                 play_file(findAudioLink());
             }
         }
