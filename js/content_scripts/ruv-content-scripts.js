@@ -8,48 +8,63 @@ chrome.runtime.onMessage.addListener(
             radio_url = null,
             audio_url = null,
             video_url = null;
-            
-        /*
-        thing = $('html').html().match("(https|http)://www.ruv.is/utvarp/static/js/main..*?\\.js");
-        radio_url = content.match("(https|http)://ruvruv-live.hls.adaptive.level3.net/.*?\\.m3u8")[0];
-        audio_url = $('audio').html().match("(https|http).*?^\s-\\.mp3")[0];
-        video_url = $('video').html().match("(https|http)://.*?[^\s-]\\.m3u8")[0];
-        */
 
-        var findAudio = function(html){
+        var findAudio = function(){
             try{
-                return $(html).html().match("src=\"(https|http)://sip-ruv-vod.dcp.adaptive.level3.net.*?\\.mp3")[0].slice(5);
+                return $('html').html().match("src=\"(https|http)://sip-ruv-vod.dcp.adaptive.level3.net.*?\\.mp3")[0].slice(5);
             }catch(e){
                 console.log(e);
                 return null;
             }
         }
 
-        var findVideo = function(html){
+        var findVideo = function(){
             try{
-                return $(html).html().match("(https|http)://.*?\\.mp4")[0];
+                var url = $('html').html().match("(https|http)://.*?\\.mp4")[0];
+                if(url.includes('?')){
+                    var x = $('html').html().match("(https|http)://.*:500.*:800.*1200.*2400.*3600")[0]
+                    // \d+\/\d+\/\d+\/3600kbps\/\w+.mp4
+                    var stream = x.match('\\d+/\\d+/\\d+/3600kbps/\\w+.mp4')[0];
+                    var url = x.match('(https|http)://..*.\\w+.\\w+.\\w+.net/\\w+/')[0];
+                    console.log('stream: ' + url+stream);
+                    return url+stream;
+                }
+                return url;
             }catch(e){
                 console.log(e);
                 return null;
             }
         }
 
-        if (findAudio('html')) {
-            console.log('Audio found!');
-            url = findAudio('html');
-        } else if (findVideo('html')) {
-            console.log('Video found!');
-            url = findVideo('html');
-            mediaType = 'video';
-        } else {
-            console.log('Something found!');
-            //url = radio_url;
+        var findUrl = function(){
+            try{
+                if (findAudio()) {
+                    console.log('Audio found!');
+                    return findAudio();
+                } else if (findVideo()) {
+                    console.log('Video found!');
+                    mediaType = 'video';
+                    return findVideo();
+                } else {
+                    console.log('Something found!');
+                    var data = $('html').find('video')[0].src;
+                    console.log(data);
+                    return data;
+                }
+            }catch(e){
+                console.log(e);
+                return null;
+            }
         }
-        console.log(url);
+
+        var url = findUrl();
+        console.log('url: ' + url);
+        
         if ("getRuvIsUrl" === request.action) {
-            console.log('MediaType: ' + mediaType);
-            console.log('url: ' + url);
-            sendResponse({url: url, mediaType: mediaType});
+            if(url && typeof url == 'string'){
+                console.log('MediaType: ' + mediaType);
+                sendResponse({url: url, mediaType: mediaType});
+            }
         }
     }
 );
