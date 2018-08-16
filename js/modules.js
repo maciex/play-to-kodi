@@ -953,6 +953,26 @@ var VisirIsModule = {
     }
 };
 
+var MblIsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*mbl.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getMblIsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var UtvarpSagaModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1065,5 +1085,6 @@ var allModules = [
     UtvarpSagaModule,
     RuvIsAudioModule,
     RuvIsVideoModule,
-    APnewsModule
+    APnewsModule,
+    MblIsModule
 ];
