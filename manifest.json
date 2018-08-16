@@ -98,6 +98,9 @@
     }, {
         "matches":["*://www.visir.is/*", "*://visir.is/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/visiris-content-scripts.js"]
+    }, {
+        "matches":["*://www.apnews.com/*", "*://apnews.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/apnews-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"

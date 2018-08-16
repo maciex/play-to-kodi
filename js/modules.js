@@ -913,6 +913,26 @@ var TeamCocoModule = {
     }
 };
 
+var APnewsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*apnews.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getAPNewsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var VisirIsModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1044,5 +1064,6 @@ var allModules = [
     VisirIsModule,
     UtvarpSagaModule,
     RuvIsAudioModule,
-    RuvIsVideoModule
+    RuvIsVideoModule,
+    APnewsModule
 ];
