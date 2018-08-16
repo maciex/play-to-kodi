@@ -913,11 +913,31 @@ var TeamCocoModule = {
     }
 };
 
+var UtvarpSagaModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*utvarpsaga.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getUtvarpSagaUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var RuvIsVideoModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
             ".*ruv.is/*",
-            "ruv.party/*"
+            ".ruv.party/*"
         ];
 
         return urlMatchesOneOfPatterns(url, validPatterns);
@@ -927,7 +947,8 @@ var RuvIsVideoModule = {
     },
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
-            if (response['MediaType'] == 'video' ) {
+                console.log('RuvIsVideoModule');
+            if (response) {
                 callback(response.url);
             }
         });
@@ -938,7 +959,7 @@ var RuvIsAudioModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
             ".*ruv.is/*",
-            "ruv.party/*"
+            ".*ruv.party/*"
         ];
 
         return urlMatchesOneOfPatterns(url, validPatterns);
@@ -948,7 +969,8 @@ var RuvIsAudioModule = {
     },
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
-            if (response['MediaType'] == 'audio' ) {
+                console.log('RuvIsAudioModule');
+            if (response) {
                 callback(response.url);
             }
         });
@@ -998,6 +1020,6 @@ var allModules = [
     YoutubeModule,
     ZdfMediathekModule,
     TeamCocoModule,
-    RuvIsVideoModule,
-    RuvIsAudioModule
+    UtvarpSagaModule,
+    RuvIsVideoModule
 ];

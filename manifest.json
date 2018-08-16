@@ -92,6 +92,9 @@
     }, {
         "matches":["*://www.ruv.is/*", "*://ruv.is/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/ruv-content-scripts.js"]
+    }, {
+        "matches":["*://www.utvarpsaga.is/*", "*://utvarpsaga.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/utvarpsaga-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"
