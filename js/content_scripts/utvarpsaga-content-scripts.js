@@ -1,20 +1,9 @@
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        var link = null
-        try{
-            link = $('html').find('video').attr('src');
-        }catch(e){
-            console.log('Video tag not found.');
-        }
-        try{
-            link = $('html').find('audio').attr('src');
-        }catch(e){
-            console.log('Video tag not found.');
-        }
         if ("getUtvarpSagaUrl" == request.action) {
+            var link = $('html').html().match("(https|http).*?\\.mp3")[0];
             if (link) {
-                console.log(link);
-                sendResponse({url: link});
+                sendResponse({url: link.split('?')[0]});
             }
         }
     }
