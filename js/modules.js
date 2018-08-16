@@ -1021,5 +1021,6 @@ var allModules = [
     ZdfMediathekModule,
     TeamCocoModule,
     UtvarpSagaModule,
+    RuvIsAudioModule,
     RuvIsVideoModule
 ];
