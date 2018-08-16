@@ -1009,7 +1009,7 @@ var RuvIsVideoModule = {
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
                 console.log('RuvIsVideoModule');
-            if (response) {
+            if (response && response.mediaType === 'video') {
                 callback(response.url);
             }
         });
@@ -1031,7 +1031,7 @@ var RuvIsAudioModule = {
     getPluginPath: function(url, getAddOnVersion, callback) {
         chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
                 console.log('RuvIsAudioModule');
-            if (response) {
+            if (response && response.mediaType === 'audio') {
                 callback(response.url);
             }
         });

@@ -5,8 +5,6 @@ chrome.runtime.onMessage.addListener(
             if (videoLink) {
                 sendResponse({url: videoLink});
             }
-            
         }
     }
 );
-
