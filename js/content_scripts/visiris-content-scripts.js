@@ -1,16 +1,14 @@
-
-
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if ("getVisirIsUrl" == request.action) {
             var getVideoLink = function(html){
                 try {
-                    var videoLink = html.match("\/hls\/.*?\\.m3u8")[0];
+                    var videoLink = html.match("\/hls\/.*?\\.(m3u8|mp3)")[0];
                     console.log(videoLink);
                     return videoLink;
                 }catch(e){
                     console.log(e);
-                    return None;
+                    return null;
                 }
             }
             
@@ -21,7 +19,7 @@ chrome.runtime.onMessage.addListener(
                     return hostLink;
                 }catch(e){
                     console.log(e);
-                    return None;
+                    return null;
                 }
             }
             
@@ -32,7 +30,7 @@ chrome.runtime.onMessage.addListener(
 
                     $.get(url, function(data, status){
                         //alert("Data: " + data + "\nStatus: " + status);
-                        var uri = data.match("\/hls\/.*?\\.m3u8")[0]
+                        var uri = data.match("\/hls\/.*?\\.(m3u8|mp3)")[0]
                         var host = data.match("Host: '.*?\\',")[0].slice(7, -2);
 
                         return host + uri
@@ -41,29 +39,26 @@ chrome.runtime.onMessage.addListener(
                     });
                 }catch(e){
                     console.log(e);
-                    return None;
+                    return null;
                 }
             }
 
             try{
                 var videoLink = getVideoLink($('html').html());
-
             }catch(e){
-
+                console.log(e);
             }
 
             try{
                 var hostLink = getHostLink($('html').html());
-
             }catch(e){
-                
+                console.log(e);
             }
 
             try{
-
                 var IframeSrc = getIframeSrc($('html'));
             }catch(e){
-                
+                console.log(e);
             }
 
             if (videoLink) {
@@ -75,4 +70,3 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
-
