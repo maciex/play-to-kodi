@@ -913,6 +913,26 @@ var TeamCocoModule = {
     }
 };
 
+var VisirIsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*visir.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getVisirIsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var UtvarpSagaModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1020,6 +1040,7 @@ var allModules = [
     YoutubeModule,
     ZdfMediathekModule,
     TeamCocoModule,
+    VisirIsModule,
     UtvarpSagaModule,
     RuvIsAudioModule,
     RuvIsVideoModule

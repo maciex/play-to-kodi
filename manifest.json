@@ -95,6 +95,9 @@
     }, {
         "matches":["*://www.utvarpsaga.is/*", "*://utvarpsaga.is/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/utvarpsaga-content-scripts.js"]
+    }, {
+        "matches":["*://www.visir.is/*", "*://visir.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/visiris-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"
