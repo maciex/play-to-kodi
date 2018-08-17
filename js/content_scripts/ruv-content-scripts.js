@@ -23,7 +23,6 @@ chrome.runtime.onMessage.addListener(
                 var url = $('html').html().match("(https|http)://.*?\\.mp4")[0];
                 if(url.includes('?')){
                     var x = $('html').html().match("(https|http)://.*:500.*:800.*1200.*2400.*3600")[0]
-                    // \d+\/\d+\/\d+\/3600kbps\/\w+.mp4
                     var stream = x.match('\\d+/\\d+/\\d+/3600kbps/\\w+.mp4')[0];
                     var url = x.match('(https|http)://..*.\\w+.\\w+.\\w+.net/\\w+/')[0];
                     console.log('stream: ' + url+stream);
