@@ -933,6 +933,26 @@ var APnewsModule = {
     }
 };
 
+var AlJazeeraModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*aljazeera.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getAlJazeeraUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var DWComModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -952,7 +972,6 @@ var DWComModule = {
         });
     }
 };
-
 var VisirIsModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1107,5 +1126,6 @@ var allModules = [
     RuvIsVideoModule,
     DWComModule,
     APnewsModule,
-    MblIsModule
+    MblIsModule,
+    AlJazeeraModule
 ];

@@ -107,6 +107,9 @@
     }, {
         "matches":["*://www.dw.com/*", "*://dw.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/dwcom-content-scripts.js"]
+    }, {
+        "matches":["*://www.aljazeera.com/*", "*://aljazeera.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/aljazeera-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"

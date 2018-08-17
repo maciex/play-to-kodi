@@ -2,7 +2,10 @@
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        console.log('Rúv!');
+        /*
+        Most of the media formats on the page will play.
+        */
+
         var url = null,
             mediaType = 'audio',
             radio_url = null,

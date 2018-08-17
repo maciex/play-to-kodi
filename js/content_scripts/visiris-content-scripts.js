@@ -1,5 +1,8 @@
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+        /*
+        Currently not working needs more work.
+        */
         if ("getVisirIsUrl" == request.action) {
             var getVideoLink = function(html){
                 try {
