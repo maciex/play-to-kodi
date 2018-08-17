@@ -104,6 +104,9 @@
     }, {
         "matches":["*://www.mbl.is/*", "*://mbl.is/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/mblis-content-scripts.js"]
+    }, {
+        "matches":["*://www.dw.com/*", "*://dw.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/dwcom-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"

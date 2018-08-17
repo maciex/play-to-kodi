@@ -933,6 +933,26 @@ var APnewsModule = {
     }
 };
 
+var DWComModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*dw.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getDWComUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var VisirIsModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1085,6 +1105,7 @@ var allModules = [
     UtvarpSagaModule,
     RuvIsAudioModule,
     RuvIsVideoModule,
+    DWComModule,
     APnewsModule,
     MblIsModule
 ];
