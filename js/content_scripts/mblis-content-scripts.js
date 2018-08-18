@@ -1,9 +1,19 @@
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+        var getMedia = function() {
+            try{
+                return $('html').find('source').attr('src');
+            }catch(e){
+                return null;
+            }
+        }
+
+        var link = getMedia();
+        console.log(link);
         if ("getMblIsUrl" == request.action) {
-            var videoLink = $('html').find('source').attr('src');
-            if (videoLink) {
-                sendResponse({url: videoLink});
+            if (link) {
+                console.log(link);
+                sendResponse({url: link});
             }
         }
     }
