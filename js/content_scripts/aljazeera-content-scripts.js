@@ -12,8 +12,8 @@ chrome.runtime.onMessage.addListener(
                     console.log(data);
                     //var url = $(data).find('video').attr('src');
                     //console.log(url);
-                    //var url = '';
-                    //return url;
+                    var url = '';
+                    return url;
                 }).done(function(data){
                     console.log('AlJazeera iframe done!');
                     console.log(data);
