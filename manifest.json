@@ -91,10 +91,10 @@
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/pornhub-content-scripts.js"]
     }, {
         "matches":["*://www.ruv.is/*", "*://ruv.is/*"],
-        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/ruv-content-scripts.js"]
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/ruvis-content-scripts.js"]
     }, {
         "matches":["*://www.utvarpsaga.is/*", "*://utvarpsaga.is/*"],
-        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/utvarpsaga-content-scripts.js"]
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/utvarpsagais-content-scripts.js"]
     }, {
         "matches":["*://www.visir.is/*", "*://visir.is/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/visiris-content-scripts.js"]
