@@ -110,6 +110,9 @@
     }, {
         "matches":["*://www.aljazeera.com/*", "*://aljazeera.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/aljazeera-content-scripts.js"]
+    }, {
+        "matches":["*://www.n4.is/*", "*://n4.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/n4is-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"
