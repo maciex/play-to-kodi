@@ -1012,6 +1012,27 @@ var MblIsModule = {
     }
 };
 
+var N4IsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*n4.is/*",
+            "n4.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getN4IsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var UtvarpSagaModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1127,5 +1148,6 @@ var allModules = [
     DWComModule,
     APnewsModule,
     MblIsModule,
-    AlJazeeraModule
+    AlJazeeraModule,
+    N4IsModule
 ];
