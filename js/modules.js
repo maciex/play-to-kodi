@@ -913,6 +913,26 @@ var TeamCocoModule = {
     }
 };
 
+var Full30Module = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*full30.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getFull30Url'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var APnewsModule = {
     canHandleUrl: function(url) {
         var validPatterns = [
@@ -1149,5 +1169,6 @@ var allModules = [
     APnewsModule,
     MblIsModule,
     AlJazeeraModule,
-    N4IsModule
+    N4IsModule,
+    Full30Module
 ];
