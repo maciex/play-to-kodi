@@ -116,6 +116,9 @@
     }, {
         "matches":["*://www.full30.com/*", "*://full30.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/full30-content-scripts.js"]
+    }, {
+        "matches":["*://www.neatclip.com/*", "*://neatclip.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/neatclip-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"

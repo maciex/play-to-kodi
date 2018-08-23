@@ -1118,6 +1118,26 @@ var RuvIsAudioModule = {
     }
 };
 
+var NeatClipModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*neatclip.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getNeatClipUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var allModules = [
     AcestreamModule,
     AnimeLabModule,
@@ -1170,5 +1190,6 @@ var allModules = [
     MblIsModule,
     AlJazeeraModule,
     N4IsModule,
-    Full30Module
+    Full30Module,
+    NeatClipModule
 ];
