@@ -89,6 +89,36 @@
     }, {
         "matches": ["*://*.pornhub.com/*"],
         "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/pornhub-content-scripts.js"]
+    }, {
+        "matches":["*://www.ruv.is/*", "*://ruv.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/ruvis-content-scripts.js"]
+    }, {
+        "matches":["*://www.utvarpsaga.is/*", "*://utvarpsaga.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/utvarpsagais-content-scripts.js"]
+    }, {
+        "matches":["*://www.visir.is/*", "*://visir.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/visiris-content-scripts.js"]
+    }, {
+        "matches":["*://www.apnews.com/*", "*://apnews.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/apnews-content-scripts.js"]
+    }, {
+        "matches":["*://*.mbl.is/*", "*://mbl.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/mblis-content-scripts.js"]
+    }, {
+        "matches":["*://www.dw.com/*", "*://dw.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/dwcom-content-scripts.js"]
+    }, {
+        "matches":["*://www.aljazeera.com/*", "*://aljazeera.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/aljazeera-content-scripts.js"]
+    }, {
+        "matches":["*://www.n4.is/*", "*://n4.is/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/n4is-content-scripts.js"]
+    }, {
+        "matches":["*://www.full30.com/*", "*://full30.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/full30-content-scripts.js"]
+    }, {
+        "matches":["*://www.neatclip.com/*", "*://neatclip.com/*"],
+        "js": ["js/jquery-2.1.4.min.js", "js/content_scripts/neatclip-content-scripts.js"]
     }],
     "web_accessible_resources": [
         "images/*"

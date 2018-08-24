@@ -893,6 +893,251 @@ var ZdfMediathekModule = {
     }
 };
 
+var TeamCocoModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*teamcoco.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getTeamCocoUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var Full30Module = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*full30.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getFull30Url'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var APnewsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*apnews.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getAPNewsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var AlJazeeraModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*aljazeera.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getAlJazeeraUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var DWComModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*dw.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getDWComUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+var VisirIsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*visir.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getVisirIsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var MblIsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*mbl.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getMblIsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var N4IsModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*n4.is/*",
+            "n4.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getN4IsUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var UtvarpSagaModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*utvarpsaga.is/*",
+            "utvarpsaga.is/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getUtvarpSagaUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var RuvIsVideoModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*ruv.is/*",
+            ".ruv.party/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
+                console.log('RuvIsVideoModule');
+            if (response && response.mediaType === 'video') {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var RuvIsAudioModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*ruv.is/*",
+            ".*ruv.party/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'audio';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getRuvIsUrl'}, function (response) {
+                console.log('RuvIsAudioModule');
+            if (response && response.mediaType === 'audio') {
+                callback(response.url);
+            }
+        });
+    }
+};
+
+var NeatClipModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*neatclip.com/*"
+        ];
+
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, getAddOnVersion, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getNeatClipUrl'}, function (response) {
+            if (response) {
+                callback(response.url);
+            }
+        });
+    }
+};
+
 var allModules = [
     AcestreamModule,
     AnimeLabModule,
@@ -934,5 +1179,17 @@ var allModules = [
     XnxxModule,
     YleAreenaModule,
     YoutubeModule,
-    ZdfMediathekModule
+    ZdfMediathekModule,
+    TeamCocoModule,
+    VisirIsModule,
+    UtvarpSagaModule,
+    RuvIsAudioModule,
+    RuvIsVideoModule,
+    DWComModule,
+    APnewsModule,
+    MblIsModule,
+    AlJazeeraModule,
+    N4IsModule,
+    Full30Module,
+    NeatClipModule
 ];
