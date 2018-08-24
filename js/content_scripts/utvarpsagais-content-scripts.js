@@ -2,7 +2,7 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         var findAudioLink = function(){
             try {
-                return $('html').html().match("(https|http).*?\\.mp3")[0];
+                return $('#fancybox-outer').find('video').attr('src');
             }catch(e){
                 return null;
             }
@@ -17,6 +17,7 @@ chrome.runtime.onMessage.addListener(
         }
 
         var play_file = function(link){
+            console.log(link);
             sendResponse({url: link.split('?')[0]});
         }
 
